@@ -6,13 +6,10 @@ export default async function handler(req, res) {
     }
 
     const { name, phone, city, product, size } = req.body;
-
-    // جلب المتغيرات من بيئة العمل Vercel
-    const accountSid = process.env.TWILIO_ACCOUNT_SID;
-    const authToken = process.env.TWILIO_AUTH_TOKEN;
-    const fromWhatsApp = process.env.TWILIO_WHATSAPP_NUMBER; // بتنسيق whatsapp:+14155238886
-    const toWhatsApp = process.env.ADMIN_WHATSAPP_NUMBER;   // بتنسيق whatsapp:+212701733406
-
+const accountSid = process.env.TWILIO_ACCOUNT_SID || 'AC6a867c73ac34e792807c062e25917514';
+const authToken = process.env.TWILIO_AUTH_TOKEN || '798898dea887e6a694fa01f8f68ee180';
+const fromWhatsApp = process.env.TWILIO_WHATSAPP_NUMBER || 'whatsapp:+14155238886'; 
+const toWhatsApp = process.env.ADMIN_WHATSAPP_NUMBER || 'whatsapp:+212701733406';
     const client = twilio(accountSid, authToken);
 
     // صياغة نص الرسالة الاحترافية
